@@ -38,9 +38,12 @@
 </template>
 
 <style lang="scss">
+@use '../style/partials/variables' as*;
+@use '../style/partials/mixins' as*;
+
 .page-footer{
-    background-color: black;
-    color: white;
+    background-color: $color-black;
+    color: $color-white;
 }
 .row-footer{
     justify-content: space-between;
@@ -51,10 +54,7 @@ h4, li{
 
 
 .footer-info, .footer-social{
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-    font-size: 12px;
+@include footer-mixin;
 }
 .row-footer{
     position: relative;

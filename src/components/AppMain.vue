@@ -18,8 +18,8 @@
                             <div class="card-body">
                                 <span class="save">&hearts;</span>
                                 <div class="img-badge">
-                                    <span class="red">-50%</span>
-                                    <span class="green">Sostenibilità</span>
+                                    <span class="badge red">-50%</span>
+                                    <span class="badge green">Sostenibilità</span>
                                 </div>
                                 <p class="clothing-brand">Levi's</p>
                                 <p class="clothing-type">RELAXED FIT TEE UNISEX</p>
@@ -40,7 +40,7 @@
                             <div class="card-body">
                                 <span class="save">&hearts;</span>
                                 <div class="img-badge">
-                                    <span class="red">-30%</span>
+                                    <span class="badge red">-30%</span>
                                 </div>
                                 <p class="clothing-brand">Guess</p>
                                 <p class="clothing-type">ROSES TEE</p>
@@ -61,7 +61,7 @@
                             <div class="card-body">
                                 <span class="save">&hearts;</span>
                                 <div class="img-badge">
-                                    <span class="red">-30%</span>
+                                    <span class="badge red">-30%</span>
                                 </div>
                                 <p class="clothing-brand">Come Zucchero Filato</p>
                                 <p class="clothing-type">VOGLIA DI COLORI PASTELLO</p>
@@ -82,8 +82,8 @@
                             <div class="card-body">
                                     <span class="save">&hearts;</span>
                                     <div class="img-badge">
-                                        <span class="red">-50%</span>
-                                        <span class="green">Sostenibilità</span>
+                                        <span class="badge red">-50%</span>
+                                        <span class="badge green">Sostenibilità</span>
                                     </div>
                                 <p class="clothing-brand">Levi's</p>
                                 <p class="clothing-type">TEE UNISEX</p>
@@ -122,7 +122,7 @@
                             <div class="card-body">
                                 <span class="save">&hearts;</span>
                                 <div class="img-badge">
-                                    <span class="green">Sostenibilità</span>
+                                    <span class="badge green">Sostenibilità</span>
                                 </div>
                                 <p class="clothing-brand">Esprit</p>
                                 <p class="clothing-type">MAGLIONE - BLACK</p>
@@ -143,62 +143,47 @@
 <style lang="scss">
 
 @use '../style/partials/variables' as*;
+@use '../style/partials/mixins' as*;
 
 .card .clothing-brand, .price-discount{
-    color: grey;
+    color: $color-grey;
 }
 .card .price-discount{
     text-decoration: line-through;
 }
 
-.card .red, .green{
-    
-    color: white;
-    font-size: 12px;
-    padding: 4px;
-}
-.card .red{
-    background-color: $badge-red;
-}
-.card .green{
-    background-color: $badge-green;
-    color: white;
-}
-.card .price{
-    color: red;
-}
-
-.card .save{
-    background-color: white;
-    padding: 5px 8px;
-    font-size: 20px;
-    line-height: 20px;
-}
-
-.card .overlay{
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    padding: 10px;
-}
-.card:hover .overlay{
-    opacity: 1;
+.badge{
+    @include badge-mixin;
 }
 .card{
+
+    &:hover .overlay{
+    opacity: 1;
+    }
     position: relative;
+    .red{
+    background-color: $color-red;
+    }
+    .green{
+    background-color: $color-green; 
+    }
+    .price{
+    color: $color-red;
+    }
+    
+} 
+
+.save{
+  @include save-mixin;
 }
 
-.card .img-badge{
-    position: absolute;
-    left: 10px;
-    bottom: 100px;
+.overlay{
+    @include overlay-mixin;
 }
 
-.card .save{
-    position: absolute;
-    top: 20px;
-    right: 10px;
+.img-badge{
+   @include img-badge-mixin;
 }
+
 
 </style>

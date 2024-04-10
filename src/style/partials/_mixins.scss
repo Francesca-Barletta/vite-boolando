@@ -1,0 +1,33 @@
+@mixin save-mixin{
+    background-color: white;
+    padding: 5px 8px;
+    font-size: 20px;
+    line-height: 20px;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+}
+@mixin img-badge-mixin{
+    position: absolute;
+    left: 10px;
+    bottom: 100px;
+}
+
+@mixin overlay-mixin{
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    padding: 10px;
+}
+@mixin badge-mixin{
+    color: white;
+    font-size: 12px;
+    padding: 4px;
+}
+@mixin footer-mixin{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    font-size: 12px;
+}
