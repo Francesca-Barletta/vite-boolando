@@ -1,5 +1,21 @@
 <script>
-
+export default {
+    data() {
+        return {
+            headerType: [
+                'Donna',
+                'Uomo',
+                'Bambino'
+              
+            ],
+            headerMenu:[
+                'login',
+                'Save-list',
+                'Cart'
+            ]
+        }
+    }
+}
 </script>
 
 <template>
@@ -9,9 +25,8 @@
 
                 <div>
                     <ul class="choose-type">
-                        <li><a href="">Donna</a></li>
-                        <li><a href="">Uomo</a></li>
-                        <li><a href="">Bambino</a></li>
+                        <li v-for="gen in headerType"><a href="#">{{ gen }}</a></li>
+
                     </ul>
                 </div>
 
@@ -21,9 +36,7 @@
 
                 <div>
                     <ul class="header-menu">
-                        <li><a href="">login</a></li>
-                        <li><a href="">Save-list</a></li>
-                        <li><a href="">Cart</a></li>
+                        <li v-for="icon in headerMenu"><a href="">{{ icon }}</a></li>
                     </ul>
                 </div>
 
@@ -34,21 +47,22 @@
 </template>
 
 <style lang="scss">
-.page-header{
-    background-color: rgb(255, 119, 0); 
-    position:fixed;
+.page-header {
+    background-color: rgb(255, 119, 0);
+    position: fixed;
     width: 100%;
     z-index: 999;
 }
-.page-main{
-    padding-top:100px;
+
+.page-main {
+    padding-top: 100px;
 }
 
-.page-header .container{
+.page-header .container {
     color: white;
 }
 
-.page-header .header-logo{
+.page-header .header-logo {
     width: 200px;
 }
 </style>
