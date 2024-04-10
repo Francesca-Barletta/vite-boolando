@@ -142,6 +142,8 @@
 
 <style lang="scss">
 
+@use '../style/partials/variables' as*;
+
 .card .clothing-brand, .price-discount{
     color: grey;
 }
@@ -156,10 +158,10 @@
     padding: 4px;
 }
 .card .red{
-    background-color: red;
+    background-color: $badge-red;
 }
 .card .green{
-    background-color: green;
+    background-color: $badge-green;
     color: white;
 }
 .card .price{
