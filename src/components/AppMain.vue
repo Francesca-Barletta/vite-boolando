@@ -1,138 +1,105 @@
 <script>
-
+    export default{
+        data(){
+            return{
+              products:[
+                {
+                    imgBase: '/1.webp',
+                    imgOver: '/1b.webp',
+                    discount: '-50%',
+                    ecoGreen: 'Sostenibilità',
+                    brand:'Levis',
+                    name: 'RELAXED FIT TEE UNISEX',
+                    price: 14.99,
+                    priceDiscount: 29.99
+                },
+                {
+                    imgBase: '/2.webp',
+                    imgOver: '/2b.webp',
+                    discount: '-30%',
+                    ecoGreen: '',
+                    brand:'Guess',
+                    name: 'ROSES TEE',
+                    price: 20.99,
+                    priceDiscount: 29.99
+                },
+                {
+                    imgBase: '/3.webp',
+                    imgOver: '/3b.webp',
+                    discount: '-30%',
+                    ecoGreen: '',
+                    brand:'Come Zucchero Filato',
+                    name: 'VOGLIA DI COLORI PASTELLO',
+                    price: 129.99,
+                    priceDiscount: 184.99
+                },
+                {
+                    imgBase: '/4.webp',
+                    imgOver: '/4b.webp',
+                    discount: '-50%',
+                    ecoGreen: 'Sostenibilità',
+                    brand:'Levis',
+                    name: 'TEE UNISEX',
+                    price: 14.99,
+                    priceDiscount: 29.99
+                },
+                {
+                    imgBase: '/5.webp',
+                    imgOver: '/5b.webp',
+                    discount: '',
+                    ecoGreen: '',
+                    brand:'Maya Deluxe',
+                    name: 'STRIPE BODICE',
+                    price: 99.99,
+                    priceDiscount: ''
+                },
+                {
+                    imgBase: '/6.webp',
+                    imgOver: '/6b.webp',
+                    discount: '',
+                    ecoGreen: 'Sostenibilità',
+                    brand:'Esprit',
+                    name: 'MAGLIONE - BLACK',
+                    price: 29.99,
+                    priceDiscount: ''
+                }
+              ]  
+            }
+        }
+    }
 </script>
 
 <template>
- <main class="page-main">
+    <main class="page-main">
         <div class="container">
             <div class="page-content">
                 <div class="row">
-                    <div class="col-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <img src="/1.webp" alt="uomo con maglietta Levi's">
-                                <div class="overlay">
-                                    <a href="#"><img src="/1b.webp" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <span class="save">&hearts;</span>
-                                <div class="img-badge">
-                                    <span class="badge red">-50%</span>
-                                    <span class="badge green">Sostenibilità</span>
-                                </div>
-                                <p class="clothing-brand">Levi's</p>
-                                <p class="clothing-type">RELAXED FIT TEE UNISEX</p>
-                                <span class="price">14,99&euro;</span>
-                                <span class="price-discount">29,99&euro;</span>
-                            </div>
-                        </div>
-                    </div>
+                    <ul>
+                        <li v-for="product in products" class="col-4">
 
-                    <div class="col-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <img src="/2.webp" alt="donna con t-shirt Guess">
-                                <div class="overlay">
-                                    <a href=""><img src="/2b.webp" alt=""></a>
+                            <div class="card">
+                                <div class="card-header">
+                                    <img :src="product.imgBase" alt="">
+                                    <div class="overlay">
+                                        <a href="#"><img :src="product.imgOver" alt=""></a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="card-body">
-                                <span class="save">&hearts;</span>
-                                <div class="img-badge">
-                                    <span class="badge red">-30%</span>
-                                </div>
-                                <p class="clothing-brand">Guess</p>
-                                <p class="clothing-type">ROSES TEE</p>
-                                <span class="price">20,99&euro;</span>
-                                <span class="price-discount">29,99&euro;</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-4">  
-                        <div class="card">
-                            <div class="card-header">
-                                <img src="/3.webp" alt="donna con completo verde chiaro">
-                                <div class="overlay">
-                                    <a href=""><img src="/3b.webp" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <span class="save">&hearts;</span>
-                                <div class="img-badge">
-                                    <span class="badge red">-30%</span>
-                                </div>
-                                <p class="clothing-brand">Come Zucchero Filato</p>
-                                <p class="clothing-type">VOGLIA DI COLORI PASTELLO</p>
-                                <span class="price">129,99&euro;</span>
-                                <span class="price-discount">184,99&euro;</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <img src="/4.webp" alt="uomo con t-shirt Levi's">
-                                <div class="overlay">
-                                    <a href=""><img src="/4b.webp" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="card-body">
+                                <div class="card-body">
                                     <span class="save">&hearts;</span>
                                     <div class="img-badge">
-                                        <span class="badge red">-50%</span>
-                                        <span class="badge green">Sostenibilità</span>
+                                        <span :class="product.discount !== ''? 'red': ''" class="badge">{{ product.discount }}</span>
+                                        <span :class="product.ecoGreen !== ''? 'green': ''" class="badge">{{ product.ecoGreen }}</span>
                                     </div>
-                                <p class="clothing-brand">Levi's</p>
-                                <p class="clothing-type">TEE UNISEX</p>
-                                <span class="price">14,99&euro;</span>
-                                <span class="price-discount">29,99&euro;</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <img src="/5.webp" alt="donna con abito Maya Deluxe">
-                                <div class="overlay">
-                                    <a href=""><img src="/5b.webp" alt=""></a>
+                                    <p class="clothing-brand">{{ product.brand }}</p>
+                                    <p class="clothing-type">{{ product.name }}</p>
+                                    <span class="price">{{ product.price }}&euro;</span>
+                                    <span class="price-discount">{{ product.priceDiscount }}&euro;</span>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <span class="save">&hearts;</span>
-                                <p class="clothing-brand">Maya Deluxe</p>
-                                <p class="clothing-type">STRIPE BODICE</p>
-                                <span class="price">99,99&euro;</span>
-                            </div>
 
-                        </div>
-                    </div>
-
-                    <div class="col-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <img src="/6.webp" alt="Donna con maglione Esprit">
-                                <div class="overlay">
-                                    <a href=""><img src="/6b.webp" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <span class="save">&hearts;</span>
-                                <div class="img-badge">
-                                    <span class="badge green">Sostenibilità</span>
-                                </div>
-                                <p class="clothing-brand">Esprit</p>
-                                <p class="clothing-type">MAGLIONE - BLACK</p>
-                                <span class="price">29,99&euro;</span>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    
-                   
+                        </li>
+                    </ul>
+    
                 </div>
 
             </div>
@@ -144,6 +111,11 @@
 
 @use '../style/partials/variables' as*;
 @use '../style/partials/mixins' as*;
+
+ul{
+    display: flex;
+    flex-wrap: wrap;
+}
 
 .card .clothing-brand, .price-discount{
     color: $color-grey;
@@ -170,7 +142,7 @@
     .price{
     color: $color-red;
     }
-    
+
 } 
 
 .save{
