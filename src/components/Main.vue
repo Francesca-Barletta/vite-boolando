@@ -183,5 +183,20 @@
 .card:hover .overlay{
     opacity: 1;
 }
+.card{
+    position: relative;
+}
+
+.card .img-badge{
+    position: absolute;
+    left: 10px;
+    bottom: 100px;
+}
+
+.card .save{
+    position: absolute;
+    top: 20px;
+    right: 10px;
+}
 
 </style>
