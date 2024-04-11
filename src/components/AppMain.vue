@@ -1,76 +1,118 @@
 <script>
+
+import AppCard from './AppCard.vue';
+
     export default{
         data(){
             return{
-              products:[
-                {
-                    imgBase: '/1.webp',
-                    imgOver: '/1b.webp',
-                    discount: '-50%',
-                    ecoGreen: 'Sostenibilità',
-                    brand:'Levis',
-                    name: 'RELAXED FIT TEE UNISEX',
-                    price: 14.99,
-                    priceDiscount: 29.99,
-                    saved: false
-                },
-                {
-                    imgBase: '/2.webp',
-                    imgOver: '/2b.webp',
-                    discount: '-30%',
-                    ecoGreen: '',
-                    brand:'Guess',
-                    name: 'ROSES TEE',
-                    price: 20.99,
-                    priceDiscount: 29.99,
-                    saved: false
-                },
-                {
-                    imgBase: '/3.webp',
-                    imgOver: '/3b.webp',
-                    discount: '-30%',
-                    ecoGreen: '',
-                    brand:'Come Zucchero Filato',
-                    name: 'VOGLIA DI COLORI PASTELLO',
-                    price: 129.99,
-                    priceDiscount: 184.99,
-                    saved: false
-                },
-                {
-                    imgBase: '/4.webp',
-                    imgOver: '/4b.webp',
-                    discount: '-50%',
-                    ecoGreen: 'Sostenibilità',
-                    brand:'Levis',
-                    name: 'TEE UNISEX',
-                    price: 14.99,
-                    priceDiscount: 29.99,
-                    saved: false
-                },
-                {
-                    imgBase: '/5.webp',
-                    imgOver: '/5b.webp',
-                    discount: '',
-                    ecoGreen: '',
-                    brand:'Maya Deluxe',
-                    name: 'STRIPE BODICE',
-                    price: 99.99,
-                    priceDiscount: '',
-                    saved: false
-                },
-                {
-                    imgBase: '/6.webp',
-                    imgOver: '/6b.webp',
-                    discount: '',
-                    ecoGreen: 'Sostenibilità',
-                    brand:'Esprit',
-                    name: 'MAGLIONE - BLACK',
-                    price: 29.99,
-                    priceDiscount: '',
-                    saved: false
-                }
-              ]  
+                "products": [
+                    {
+                        "id": 1,
+                        "frontImage": "1.webp",
+                        "backImage": "1b.webp",
+                        "brand": "Levi's",
+                        "name": "Relaxed Fit",
+                        "price": 29.99,
+                        "isInFavorites": true,
+                        "badges": [
+                            {
+                                "type": "tag",
+                                "value": "Sostenibilità"
+                            },
+                            {
+                                "type": "discount",
+                                "value": "-50%"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 2,
+                        "frontImage": "2.webp",
+                        "backImage": "2b.webp",
+                        "brand": "Guess",
+                        "name": "Roses Tee",
+                        "price": 20.99,
+                        "isInFavorites": true,
+                        "badges": [
+                            {
+                                "type": "discount",
+                                "value": "-30%"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 3,
+                        "frontImage": "3.webp",
+                        "backImage": "3b.webp",
+                        "brand": "Come Zucchero Filato",
+                        "name": "Voglia di colori pastello",
+                        "price": 129.99,
+                        "isInFavorites": false,
+                        "badges": [
+                            {
+                                "type": "discount",
+                                "value": "-30%"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 4,
+                        "frontImage": "4.webp",
+                        "backImage": "4b.webp",
+                        "brand": "Levi's",
+                        "name": "Tee Unisex",
+                        "price": 14.99,
+                        "isInFavorites": false,
+                        "badges": [
+                            {
+                                "type": "tag",
+                                "value": "Sostenibilità"
+                            },
+                            {
+                                "type": "discount",
+                                "value": "-50%"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 5,
+                        "frontImage": "5.webp",
+                        "backImage": "5b.webp",
+                        "brand": "Maya Deluxe",
+                        "name": "Stripe Bodice",
+                        "price": 99.99,
+                        "isInFavorites": true,
+                        "badges": [
+                            {
+                                "type": "tag",
+                                "value": "Sostenibilità"
+                            },
+                            {
+                                "type": "discount",
+                                "value": "-50%"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 6,
+                        "frontImage": "6.webp",
+                        "backImage": "6b.webp",
+                        "brand": "Esprit",
+                        "name": "Maglione - Black",
+                        "price": 29.99,
+                        "isInFavorites": true,
+                        "badges": [
+                            {
+                                "type": "tag",
+                                "value": "Sostenibilità"
+                            }
+                        ]
+                    }
+                ]
             }
+        },
+        components: {
+            AppCard
         }
     }
 </script>
@@ -81,9 +123,9 @@
             <div class="page-content">
                 <div class="row">
                     <ul>
-                        <li v-for="product in products" class="col-4">
-
-                            <div class="card">
+                        <li v-for="(product,i) in products" :key="i" class="col-4">
+                          <AppCard :singleProduct="product"/>
+                            <!-- <div class="card">
                                 <div class="card-header">
                                     <img :src="product.imgBase" alt="">
                                     <div class="overlay">
@@ -101,9 +143,9 @@
                                     <span class="price">{{ product.price }}&euro;</span>
                                     <span class="price-discount">{{ product.priceDiscount }}&euro;</span>
                                 </div>
-                            </div>
+                            </div> -->
 
-                        </li>
+                        </li> 
                     </ul>
     
                 </div>
@@ -113,7 +155,7 @@
     </main>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 @use '../style/partials/variables' as*;
 @use '../style/partials/mixins' as*;
@@ -123,49 +165,49 @@ ul{
     flex-wrap: wrap;
 }
 
-.card .clothing-brand, .price-discount{
-    color: $color-grey;
-}
-.card .price-discount{
-    text-decoration: line-through;
-}
+// .card .clothing-brand, .price-discount{
+//     color: $color-grey;
+// }
+// .card .price-discount{
+//     text-decoration: line-through;
+// }
 
-.badge{
-    @include badge-mixin;
-}
-.card{
+// .badge{
+//     @include badge-mixin;
+// }
+// .card{
 
-    &:hover .overlay{
-    opacity: 1;
-    }
-    position: relative;
-    .red{
-    background-color: $color-red;
-    }
-    .green{
-    background-color: $color-green; 
-    }
-    .price{
-    color: $color-red;
-    }
+//     &:hover .overlay{
+//     opacity: 1;
+//     }
+//     position: relative;
+//     .red{
+//     background-color: $color-red;
+//     }
+//     .green{
+//     background-color: $color-green; 
+//     }
+//     .price{
+//     color: $color-red;
+//     }
 
-} 
-.saved{
-    color: $color-red
-}
+// } 
+// .saved{
+//     color: $color-red
+// }
 
-.save{
-  @include save-mixin;
+// .save{
+//   @include save-mixin;
   
-}
+// }
 
-.overlay{
-    @include overlay-mixin;
-}
+// .overlay{
+//     @include overlay-mixin;
+// }
 
-.img-badge{
-   @include img-badge-mixin;
-}
+// .img-badge{
+//    @include img-badge-mixin;
+// }
 
 
 </style>
