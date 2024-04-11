@@ -1,6 +1,18 @@
 <script>
 export default{
-    props:['singleProduct']
+    data(){
+        return{
+            productIndex: 0,
+            badgeIndex: 0
+        }
+    },
+    props:{
+        singleProduct: Object,
+        badges: Array
+    },
+    mounted(){
+        console.log(this.singleProduct.badges[1])
+    }
 }
 </script>
 
@@ -15,10 +27,10 @@ export default{
             </div>
             <div class="card-body">
                 <span class="save">&hearts;</span>
-                <div class="img-badge">
-                    <span class="red">-50%</span>
-                    <span class="green">Sostenibilità</span>
-                </div>
+                <ul v-for="(badgeObject, i) in singleProduct.badges" :key="i" class="img-badge">
+                    <li v-if="badgeObject.type == 'discount'" class="badge red">{{ badgeObject.value }}</li>
+                    <li v-if="badgeObject.type == 'tag'" class="badge green">{{ badgeObject.value }}</li>
+                </ul>
                 <p class="clothing-brand">{{singleProduct.brand}}</p>
                 <p class="clothing-type">{{ singleProduct.name }}</p>
                 <span class="price">{{singleProduct.price}}&euro;</span>
@@ -46,20 +58,20 @@ export default{
 .badge{
     @include badge-mixin;
 }
-.card{
+.card {
+    position: relative;
 
     &:hover .overlay{
-    opacity: 1;
+        opacity: 1;
     }
-    position: relative;
     .red{
-    background-color: $color-red;
+        background-color: $color-red;
     }
     .green{
-    background-color: $color-green; 
+        background-color: $color-green; 
     }
     .price{
-    color: $color-red;
+        color: $color-red;
     }
 
 } 
@@ -76,8 +88,10 @@ export default{
     @include overlay-mixin;
 }
 
-.img-badge{
-   @include img-badge-mixin;
+.img-badge {
+    position: absolute;
+    left: 10px;
+    bottom: 100px;
 }
 
 </style>
