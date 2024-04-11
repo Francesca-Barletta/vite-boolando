@@ -11,7 +11,8 @@
                     brand:'Levis',
                     name: 'RELAXED FIT TEE UNISEX',
                     price: 14.99,
-                    priceDiscount: 29.99
+                    priceDiscount: 29.99,
+                    saved: false
                 },
                 {
                     imgBase: '/2.webp',
@@ -21,7 +22,8 @@
                     brand:'Guess',
                     name: 'ROSES TEE',
                     price: 20.99,
-                    priceDiscount: 29.99
+                    priceDiscount: 29.99,
+                    saved: false
                 },
                 {
                     imgBase: '/3.webp',
@@ -31,7 +33,8 @@
                     brand:'Come Zucchero Filato',
                     name: 'VOGLIA DI COLORI PASTELLO',
                     price: 129.99,
-                    priceDiscount: 184.99
+                    priceDiscount: 184.99,
+                    saved: false
                 },
                 {
                     imgBase: '/4.webp',
@@ -41,7 +44,8 @@
                     brand:'Levis',
                     name: 'TEE UNISEX',
                     price: 14.99,
-                    priceDiscount: 29.99
+                    priceDiscount: 29.99,
+                    saved: false
                 },
                 {
                     imgBase: '/5.webp',
@@ -51,7 +55,8 @@
                     brand:'Maya Deluxe',
                     name: 'STRIPE BODICE',
                     price: 99.99,
-                    priceDiscount: ''
+                    priceDiscount: '',
+                    saved: false
                 },
                 {
                     imgBase: '/6.webp',
@@ -61,7 +66,8 @@
                     brand:'Esprit',
                     name: 'MAGLIONE - BLACK',
                     price: 29.99,
-                    priceDiscount: ''
+                    priceDiscount: '',
+                    saved: false
                 }
               ]  
             }
@@ -85,7 +91,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <span class="save">&hearts;</span>
+                                    <span class="save" @click="product.saved = !product.saved":class="product.saved === true ? 'saved': ''">&hearts;</span>
                                     <div class="img-badge">
                                         <span :class="product.discount !== ''? 'red': ''" class="badge">{{ product.discount }}</span>
                                         <span :class="product.ecoGreen !== ''? 'green': ''" class="badge">{{ product.ecoGreen }}</span>
@@ -144,9 +150,13 @@ ul{
     }
 
 } 
+.saved{
+    color: $color-red
+}
 
 .save{
   @include save-mixin;
+  
 }
 
 .overlay{
