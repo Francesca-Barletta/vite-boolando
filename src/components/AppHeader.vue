@@ -3,10 +3,18 @@ export default {
     data() {
         return {
             headerType: [
-                'Donna',
-                'Uomo',
-                'Bambino'
-              
+                {
+                    text: 'Donna',
+                    href: '#'
+                },
+                {
+                    text: 'Uomo',
+                    href: '#'
+                },
+                {
+                    text: 'Bambino',
+                    href: '#'
+                }
             ],
             headerMenu:[
                 'login',
@@ -25,7 +33,7 @@ export default {
 
                 <div>
                     <ul class="choose-type">
-                        <li v-for="gen in headerType"><a href="#">{{ gen }}</a></li>
+                        <li v-for="(gen,i) in headerType" :key="i">{{ gen.text }}</li>
 
                     </ul>
                 </div>
