@@ -1,11 +1,6 @@
 <script>
 export default{
-    data(){
-        return{
-            productIndex: 0,
-            badgeIndex: 0
-        }
-    },
+
     props:{
         singleProduct: Object,
         badges: Array
@@ -26,10 +21,12 @@ export default{
                 </div>
             </div>
             <div class="card-body">
-                <span class="save">&hearts;</span>
-                <ul v-for="(badgeObject, i) in singleProduct.badges" :key="i" class="img-badge">
-                    <li v-if="badgeObject.type == 'discount'" class="badge red">{{ badgeObject.value }}</li>
-                    <li v-if="badgeObject.type == 'tag'" class="badge green">{{ badgeObject.value }}</li>
+                <span @click="singleProduct.isInFavorites = !singleProduct.isInFavorites" 
+                :class="singleProduct.isInFavorites == false ? 'save':'saved'">&hearts;</span>
+                <ul class="img-badge">
+                    <li v-for="(badgeObject, i) in singleProduct.badges" :key="i" 
+                       :class="badgeObject.type" class="badge">{{ badgeObject.value }} "</li>
+                    
                 </ul>
                 <p class="clothing-brand">{{singleProduct.brand}}</p>
                 <p class="clothing-type">{{ singleProduct.name }}</p>
@@ -64,11 +61,14 @@ export default{
     &:hover .overlay{
         opacity: 1;
     }
-    .red{
+    .discount{
         background-color: $color-red;
+        color:white;
+        order: -1;
     }
-    .green{
+    .tag{
         background-color: $color-green; 
+        color:white;
     }
     .price{
         color: $color-red;
@@ -76,7 +76,9 @@ export default{
 
 } 
 .saved{
-    color: $color-red
+    color: $color-red;
+    @include save-mixin;
+  
 }
 
 .save{
@@ -92,6 +94,8 @@ export default{
     position: absolute;
     left: 10px;
     bottom: 100px;
+    display:flex;
+
 }
 
 </style>
