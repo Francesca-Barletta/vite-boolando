@@ -1,12 +1,13 @@
 <script>
 
 import AppCard from './AppCard.vue';
-import data from '../assets/db.json'
+// import data from '../assets/db.json'
+import { store } from '../store.js'
 
     export default{
         data(){
             return{
-                products: data.products
+                store
             }
         },
         components: {
@@ -21,7 +22,7 @@ import data from '../assets/db.json'
             <div class="page-content">
                 <div class="row">
                     <ul>
-                        <li v-for="product in products" :key="product.id" class="col-4">
+                        <li v-for="product in store.products" :key="product.id" class="col-4">
                           <AppCard :singleProduct="product"/>
                             <!-- <div class="card">
                                 <div class="card-header">

@@ -1,6 +1,6 @@
 <script>
-export default{
 
+export default{
     props:{
         singleProduct: Object,
         badges: Array
