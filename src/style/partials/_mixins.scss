@@ -7,6 +7,7 @@
     top: 20px;
     right: 10px;
     cursor: pointer;
+    user-select: none;
 }
 @mixin img-badge-mixin{
     position: absolute;

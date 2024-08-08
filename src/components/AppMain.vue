@@ -1,6 +1,7 @@
 <script>
 
 import AppCard from './AppCard.vue';
+
 // import data from '../assets/db.json'
 import { store } from '../store.js'
 
@@ -11,7 +12,8 @@ import { store } from '../store.js'
             }
         },
         components: {
-            AppCard
+            AppCard,
+          
         }
     }
 </script>
@@ -51,6 +53,7 @@ import { store } from '../store.js'
 
             </div>
         </div>
+        
     </main>
 </template>
 

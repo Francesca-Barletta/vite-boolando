@@ -1,9 +1,23 @@
 <script>
-
+import AppModal from './AppModal.vue';
 export default{
+    components: {
+        AppModal
+    },
     props:{
         singleProduct: Object,
         badges: Array
+    },
+    data() {
+        return {
+            isOpen :false,
+        }
+
+    },
+    methods: {
+        openModal() {
+            this.isOpen = true;
+        }
     },
     mounted(){
         console.log(this.singleProduct.badges[1])
@@ -13,7 +27,7 @@ export default{
 
 <template>
     
-        <div class="card">
+        <div class="card" @click="openModal">
             <div class="card-header">
                 <img :src="singleProduct.frontImage" alt="uomo con maglietta Levi's">
                 <div class="overlay">
@@ -35,7 +49,7 @@ export default{
             </div>
         </div>
  
-
+  <AppModal :open="isOpen" :item="singleProduct" @exit="isOpen = false"/>
 
 </template>
 
